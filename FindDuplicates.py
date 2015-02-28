@@ -20,7 +20,7 @@ import hashlib
 
 # The initial directory you wish to start at.
 # The program will not go outside of this directory.
-initial_file_directory = 'C:\\'
+initial_file_directory = 'C:\\Users\\Logan\\Desktop\\Easy_Longboarding_15'
 
 # Holds the md5 sums for all of the files.
 md5_sums = {}
@@ -44,18 +44,18 @@ def scan_dirs(path):
     Most of the code came from:
     http://bogdan.org.ua/2007/08/12/python-iterate-and-read-all-files-in-a-directory-folder.html#comment-103404
     """
-    for currentFile in glob.glob( os.path.join(path, '*') ):
+    for current_file in glob.glob( os.path.join(path, '*') ):
         # If the file is a directory, scan that directory
-        if os.path.isdir(currentFile):
-            scan_dirs(currentFile)
+        if os.path.isdir(current_file):
+            scan_dirs(current_file)
         else:
-            current_sum = md5_sum(currentFile)
+            current_sum = md5_sum(current_file)
             # If the sum is 0, there was an error with the file.
             if current_sum != 0:
                 if current_sum in md5_sums:
-                    dupe_file_paths.append(currentFile)
+                    dupe_file_paths.append(current_file)
                 else:
-                    md5_sums[md5_sum(currentFile)] = currentFile
+                    md5_sums[md5_sum(current_file)] = current_file
 
 def md5_sum(filename):
     """Figures out the md5 sum for a file given through the filename.
