@@ -1,2 +1,2 @@
 # Python-Duplicate-File-Finder
-This program goes through all of the files on a computer, generates an MD5 sum, and reports back to the user which files that were duplicates.
+This program recrusively goes through all directories and files given and reports back files that are duplicates. This program generates an MD5 sum for each file and stores it in a dictonary.
