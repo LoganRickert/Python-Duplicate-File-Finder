@@ -66,7 +66,7 @@ def md5_sum(filename):
     Source:
     http://www.pythoncentral.io/hashing-files-with-python/
     """
-    BLOCKSIZE = 128
+    BLOCKSIZE = 65536
     hasher = hashlib.md5()
 
     # Makes sure file can be read. May be come back permission denied.
