@@ -48,25 +48,34 @@ def scan_dirs(path):
         # Make sure the path is not a directory coming out of the recursion
         if not os.path.isdir(currentFile):
             current_sum = md5_sum(currentFile)
-            if current_sum in md5_sums:
-                dupe_file_paths.append(currentFile)
-            else:
-                md5_sums[md5_sum(currentFile)] = currentFile
+            # If the sum is 0, there was an error with the file.
+            if current_sum != 0:
+                if current_sum in md5_sums:
+                    dupe_file_paths.append(currentFile)
+                else:
+                    md5_sums[md5_sum(currentFile)] = currentFile
 
 def md5_sum(filename):
     """Figures out the md5 sum for a file given through the filename.
+    If the file has an error on opening, the MD5sume comes back as 0.
 
     Source:
     http://www.pythoncentral.io/hashing-files-with-python/
     """
     BLOCKSIZE = 128
     hasher = hashlib.md5()
-    with open(filename, 'rb') as afile:
-        buf = afile.read(BLOCKSIZE)
-        while len(buf) > 0:
-            hasher.update(buf)
+
+    # Makes sure file can be read. May be come back permission denied.
+    try:
+        with open(filename, 'rb') as afile:
             buf = afile.read(BLOCKSIZE)
-    return hasher.hexdigest()
+            while len(buf) > 0:
+                hasher.update(buf)
+                buf = afile.read(BLOCKSIZE)
+        return hasher.hexdigest()
+    except:
+        print("Error reading the file: " + filename)
+        return "0"
 
 def print_md5_dictonary():
     """Goes through the md5 dictionary and prints out the md5 sums
