@@ -20,7 +20,7 @@ import hashlib
 
 # The initial directory you wish to start at.
 # The program will not go outside of this directory.
-initial_file_directory = 'C:\\'
+initial_file_directory = 'C:\\Users\\Logan\\Desktop\\processing-2.2.1'
 
 # Holds the md5 sums for all of the files.
 md5_sums = {}
@@ -48,9 +48,7 @@ def scan_dirs(path):
         # If the file is a directory, scan that directory
         if os.path.isdir(currentFile):
             scan_dirs(currentFile)
-
-        # Make sure the path is not a directory coming out of the recursion
-        if not os.path.isdir(currentFile):
+        else:
             current_sum = md5_sum(currentFile)
             # If the sum is 0, there was an error with the file.
             if current_sum != 0:
