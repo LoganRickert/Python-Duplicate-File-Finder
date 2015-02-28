@@ -14,6 +14,10 @@ import os
 import glob
 import hashlib
 
+# The initial directory you wish to start at.
+# The program will not go outside of this directory.
+initial_file_directory = 'C:\\'
+
 # Holds the md5 sums for all of the files.
 md5_sums = {}
 
@@ -76,7 +80,7 @@ def print_md5_dictonary():
 #############################
 
 # Scans the directories and fills the md5_sums and dupe_file_paths
-scan_dirs('C:\\')
+scan_dirs(initial_file_directory)
 
 # Prints out all of the duplicate files
 print("Duplicate files: ")
