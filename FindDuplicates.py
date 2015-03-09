@@ -20,7 +20,7 @@ import hashlib
 
 # The initial directory you wish to start at.
 # The program will not go outside of this directory.
-initial_file_directory = 'C:\\Users\\Logan\\Desktop\\Easy_Longboarding_15'
+initial_file_directory = 'C:\\'
 
 # Holds the md5 sums for all of the files.
 md5_sums = {}
